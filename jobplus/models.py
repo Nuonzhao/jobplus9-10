@@ -36,6 +36,7 @@ class User(Base, UserMixin):
 	_password = db.Column('password', db.String(256), nullable=False)
 	role = db.Column(db.SmallInteger, default=ROLE_USER)
 	mobilephone = db.Column(db.String(11))
+	work_years = db.Column(db.SmallInteger())  #工作年限
 
 	is_disable = db.Column(db.Boolean, default=False) #是否被禁用
 	resume_url = db.Column(db.String(128)) #简历的地址
@@ -60,11 +61,11 @@ class User(Base, UserMixin):
 
 	@property
 	def is_company(self):
-		return self.role == ROLE_COMPANY
+		return self.role == self.ROLE_COMPANY
 
 	@property 
 	def is_admin(self):
-		return self.role == ROLE_ADMIN
+		return self.role == self.ROLE_ADMIN
 
 class Company(Base):
 	__tablename__ = 'company'
