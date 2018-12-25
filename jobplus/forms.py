@@ -25,7 +25,7 @@ class LoginForm(FlaskForm):
 
 class UserProfileForm(FlaskForm):
     realname = StringField('姓名',validators=[DataRequired('请输入简历上的真实姓名')])
-    email = = StringField('邮箱', validators=[DataRequired('请输入邮箱'), Email(message='邮箱格式不正确!')])
+    email = StringField('邮箱', validators=[DataRequired('请输入邮箱'), Email(message='邮箱格式不正确!')])
     password = PasswordField('密码(不填写保持不变)')
     mobilephone = StringField('手机号码', validators=[DataRequired('请输入手机号码'), Regexp('1[345789][0-9]{9}',message='手机号码格式不正确!')])
     work_years = IntegerField('工作年限', validators=[NumberRange(min=0, message='无效的工作年限')])
